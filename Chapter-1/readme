@@ -1,1 +1,7 @@
 all codes of chapter 1
+
+# task 1 :
+This Python program demonstrates and compares multiprocessing and multithreading for performing the same CPU-bound task: computing squares of numbers and storing them in lists. Multiprocessing creates separate processes with independent memory space using multiprocessing.Manager().list(), while multithreading uses threads that share the same memory. The program measures and prints the execution time for both approaches, showing how multiprocessing can speed up CPU-intensive tasks by bypassing Python’s Global Interpreter Lock (GIL), whereas multithreading is more suited for I/O-bound tasks.
+
+
+
