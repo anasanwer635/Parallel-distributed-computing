@@ -1,38 +1,66 @@
+1. broadcast.py
 
-1. IPC.py
+Demonstrates MPI broadcast communication using mpi4py.
 
-Implements the Producer–Consumer problem using the multiprocessing module.
+The root process (rank 0) initializes a variable and broadcasts it to all other processes.
 
-Two producers create items and place them in a shared Queue.
+Every process prints the received shared value.
 
-Two consumers retrieve and process items from the same queue.
+Illustrates one-to-many data sharing in MPI.
 
-Demonstrates inter-process communication (IPC) and synchronization between processes.
 
-2. MPI.py
+broadcast
 
-Shows basic multiprocessing by creating two independent processes.
+2. pointToPointCommunication.py
 
-Each process prints a message.
+Shows point-to-point message passing between multiple processes using send() and recv().
 
-Demonstrates how to start, run, and join multiple processes.
+Process 0 sends data to process 4.
 
-3. ProcessCreationAndManagement.py
+Process 1 sends data to process 8.
 
-Creates and manages two separate processes performing different tasks.
+Destination processes receive and display the transmitted values.
 
-One process calculates the square of a number.
+Demonstrates direct communication between specific pairs of processes.
 
-The other calculates the cube of the same number.
 
-Illustrates parallel execution of processes.
+pointToPointCommunication
 
-4. synchronization.py
+3. gather.py
 
-Demonstrates thread synchronization using a semaphore and a thread pool.
+Implements MPI gather operation to collect results from all processes to the root.
 
-Multiple threads attempt to access a shared resource.
+Each process computes (rank + 1)² and sends it to the root (rank 0).
 
-A semaphore ensures that only one thread accesses the resource at a time.
+The root gathers all results and prints data received from each process.
 
-Shows safe concurrent execution with ThreadPoolExecutor.
+Illustrates many-to-one communication.
+
+
+gather
+
+4. scatter.py
+
+Demonstrates MPI scatter operation to distribute an array among processes.
+
+The root (rank 0) has an array of integers.
+
+Each process receives a single element from the array.
+
+Useful for splitting large data sets across multiple workers.
+
+
+scatter
+
+5. deadLockProblems.py
+
+Shows an example of deadlock in MPI using bidirectional send()/recv() between two processes.
+
+Process 1 and process 5 both try to send messages simultaneously before receiving.
+
+If not carefully ordered, this leads to a deadlock situation.
+
+Demonstrates the importance of proper message ordering and synchronization.
+
+
+deadLockProblems
